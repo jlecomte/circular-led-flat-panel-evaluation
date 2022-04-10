@@ -1,6 +1,6 @@
 # Circular LED Strip Flat Panel Uniformity Evaluation
 
-I am planning to build a flat field light panel using a circular LED strip placed against a circular wall encircling a diffusing sheet. The LED strip itself would not be directly visible as it would be tucked under a small lip around the top perimeter of the panel.
+I am planning to build a flat field light panel using a circular LED strip placed against a circular wall encircling a diffusing sheet. The LED strip itself would not be directly visible as it would be tucked under a small lip around the top perimeter of the panel. The diffusing sheet would be lit up by the LED strip and would reflect the light back towards to the telescope.
 
 I was wondering how uniform such a panel would be. My expectation is that we should see obvious differences in brightness, especially around the LEDs themselves, even though they would not be directly visible thanks to that small lip.
 
