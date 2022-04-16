@@ -22,10 +22,14 @@ format long;
 # x = position of the point for which we want to know the intensity along the x-axis
 # y = position of the point for which we want to know the intensity along the y-axis
 function I = intensity(n, xLED, yLED, r, h, theta, x, y)
+  # Exclude points outside a circle of radius r
   if norm([x y] - [0 0]) > r
     I = 0;
     return;
   endif
+  
+  # Vector normal to the background surface
+  N = [0 0 -1];
 
   intensities = [];
 
@@ -39,9 +43,17 @@ function I = intensity(n, xLED, yLED, r, h, theta, x, y)
     # The viewing angle LED i is seen by the x, y point
     # See https://www.mathworks.com/matlabcentral/answers/328240-calculate-the-3d-angle-between-two-vectors
     alpha = atan2(norm(cross(v1, v2)), dot(v1, v2));
-    # Compute the intensity caused by LED i using the inverse square law, and by
-    # taking into account the viewing angle since LEDs emit a directional beam of light.
-    intensities(i) = (1 / norm([x y 0] - [xLED(i) yLED(i) h])) * exp(-(alpha^2/(2*theta^2)));
+    # The angle between N and the vector connecting the x, y point and LED i
+    beta = atan2(norm(cross(v1, N)), dot(v1, N));
+    # Compute the intensity caused by LED i:
+    # 1) by taking into account the viewing angle since LEDs emit a directional beam of light
+    #    (we use a Gaussian model here, which is just an approximation)
+    # 2) using the inverse square law since light flux decreases inversely to the square of
+    #    the distance from the light source
+    # 3) by taking into account the angle between the light ray and the background surface.
+    #    The steeper the angle, the dimmer the point (which is why we have seasons on Earth...)
+    # The 3 factors below are in that order:
+    intensities(i) = exp(-(alpha^2/(2*theta^2))) * (1 / norm([x y 0] - [xLED(i) yLED(i) h])) * cos(beta);
   endfor
 
   I = sum(intensities);
@@ -61,7 +73,7 @@ r = 78.5;
 # Standard values seem to be:
 #   - 16.5 mm for "standard" LED strips
 #   - 4.2mm for "high density" LED strips
-l = 16.5;
+l = 4.2;
 
 # Height of the strip over reflective background sheet in mm
 h = 5;
@@ -109,6 +121,7 @@ for x = tx
   for y = ty
      val = intensity(n, xLED, yLED, r, h, theta, x, y);
      tz(xindex, yindex) = val;
+     # Exclude 0 since the intensity function returns 0 for points outside the circle...
      if val > 0 && val < minval
        minval = val;
      endif
