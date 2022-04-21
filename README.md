@@ -52,3 +52,20 @@ The completed unit:
 Test fitting the unit to my telescope (AT130EDT):
 
 ![The Light Guiding Plate(LGP)](images/flat-panel-fitted.png)
+
+## Experimental Measurement Of Uniformity
+
+Using my DSLR camera, I took the following photograph of my light panel prototype, in a dark room, to estimate its uniformity.
+
+**Notes:**
+
+* I captured the image in RAW format.
+* I took a relatively long exposure (~300 msec) to avoid seeing the effect of the PWM signal, which is very visible in the live view.
+* I made sure that the peak of the histogram was around 20-30% to stay within the linear range of the sensor.
+* I looked at the data with PixInsight. I simply debayered the image, and then extracted the CIE L* component, so we are looking at a grayscale image.
+
+Here is what I get, with the panel intensity set at ~ 50%:
+
+![Experimental measurement results](images/uniformity-measurement.png)
+
+This shows that **the panel is uniform within 0.5%!** Honestly, I don't think that a flat panel, located only inches away from the objective lens, needs to be all that uniform, but wow, this is amazing!
