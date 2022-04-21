@@ -1,6 +1,6 @@
 # Circular LED Strip Flat Panel Uniformity Evaluation
 
-A Flat frame is the most important type of calibration frame used in astrophotography. It allows us to correct issues such as [vignetting](https://en.wikipedia.org/wiki/Vignetting), or remove the impact of dust motes on the filters or the sensor. A common way to capture flat frames is done using a flat panel, which is a uniformly lit surface that can be placed in front of the telescope.
+A [flat frame](https://en.wikipedia.org/wiki/Flat-field_correction) is the most important type of calibration frame used in astrophotography. It allows us to correct issues such as [vignetting](https://en.wikipedia.org/wiki/Vignetting), or remove the impact of dust motes on the filters or the sensor. A common way to capture flat frames is done using a flat panel, which is a uniformly lit surface that can be placed in front of the telescope.
 
 ## Modeling
 
