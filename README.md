@@ -1,5 +1,13 @@
 # Circular LED Strip Flat Panel Uniformity Evaluation
 
+- [Introduction](#introduction)
+- [Modeling](#modeling)
+- [Prototyping](#prototyping)
+- [Experimental Measurement Of Uniformity](#experimental-measurement-of-uniformity)
+- [Eperimental Lambertian Evaluation](#eperimental-lambertian-evaluation)
+
+## Introduction
+
 A [flat frame](https://en.wikipedia.org/wiki/Flat-field_correction) is the most important type of calibration frame used in astrophotography. It allows us to correct issues such as [vignetting](https://en.wikipedia.org/wiki/Vignetting), or remove the impact of dust motes on the filters or the sensor. A common way to capture flat frames is done using a flat panel, which is a uniformly lit surface that can be placed in front of the telescope.
 
 ## Modeling
@@ -69,3 +77,15 @@ Here is what I get, with the panel intensity set at ~ 50%:
 ![Experimental measurement results](images/uniformity-measurement.png)
 
 This shows that **the panel is uniform within 0.5%!** Honestly, I don't think that a flat panel, located only inches away from the objective lens, needs to be all that uniform, but wow, this is amazing!
+
+## Eperimental Lambertian Evaluation
+
+A good flat panel should not only be uniform, it should also be [Lambertian](https://en.wikipedia.org/wiki/Lambert%27s_cosine_law) in order for the irradiance to match the sky background. Any directionality to the light may impact calibration. I measured the impact of the angle between the flat panel surface and the line of sight on the measured intensity. I did it in 5° increments, from 0° to 45°. Here are 3 of those 10 images, as an example of what I did:
+
+![Flat panel viewing angles](images/flat-panel-viewing-angles.png)
+
+I imported the 10 raw images I captured in PixInsight, debayered them, extracted the luminance channel, batch cropped them to extract the same center portion of the flat panel, and used the `ImageStatistics` process on each resulting image to extract the median value. The result is captured in the following chart:
+
+![Lambertian evaluation results](images/lambertian-evaluation-results.png)
+
+This shows that the measured brightness decreases by as much as 5% when the panel is oriented at a 45° angle compared to when it is directly facing the camera. It looks relatively flat up to 15° (so, that would be a 30° cone of light) before it starts to decrease (any variations within that range is probably within the margin of error). So there does seem to be _some small amount_ of directionality, i.e. it is not perfect, but 5% is fairly good. The directionality may be caused by the way that specific LGP is manufactured. Other LGPs use particles embedded in an acrylic sheet, and I would expect those to be more "Lambertian"...
