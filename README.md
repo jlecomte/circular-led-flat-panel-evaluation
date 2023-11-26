@@ -4,7 +4,7 @@
 - [Modeling](#modeling)
 - [Prototyping](#prototyping)
 - [Experimental Measurement Of Uniformity](#experimental-measurement-of-uniformity)
-- [Eperimental Lambertian Evaluation](#eperimental-lambertian-evaluation)
+- [Experimental Lambertian Evaluation](#eperimental-lambertian-evaluation)
 
 ## Introduction
 
@@ -78,7 +78,7 @@ Here is what I get, with the panel intensity set at ~ 50%:
 
 This shows that **the panel is uniform within 0.5%!** Honestly, I don't think that a flat panel, located only inches away from the objective lens, needs to be all that uniform, but wow, this is amazing!
 
-## Eperimental Lambertian Evaluation
+## Experimental Lambertian Evaluation
 
 A good flat panel should not only be uniform, it should also be [Lambertian](https://en.wikipedia.org/wiki/Lambert%27s_cosine_law) in order for the irradiance to match the sky background. Any directionality to the light may impact calibration. I measured the impact of the angle between the flat panel surface and the line of sight on the measured intensity. I did it in 5° increments, from 0° to 45°. Here are 3 of those 10 images, as an example of what I did:
 
